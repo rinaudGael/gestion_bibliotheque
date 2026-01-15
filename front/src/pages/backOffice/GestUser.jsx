@@ -14,40 +14,38 @@ const GestUser = () => {
   }, [search, sort, order]);
 
   const fetchUsers = async () => {
-  try {
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    const params = new URLSearchParams();
-    if (search) params.append("search", search);
-    if (sort) params.append("sort", sort);
-    if (order) params.append("order", order);
+      const params = new URLSearchParams();
+      if (search) params.append("search", search);
+      if (sort) params.append("sort", sort);
+      if (order) params.append("order", order);
 
-    const res = await fetch(
-      `http://localhost:5001/users?${params.toString()}`
-    );
+      const res = await fetch(
+        `http://localhost:5001/users?${params.toString()}`
+      );
 
-    const data = await res.json();
-     console.log("Données reçues :", data);
-    setUsers(data);
-  } catch (err) {
-    console.error("Erreur fetch employés :", err);
-  } finally {
-    setLoading(false);
-  }
-};
-const handleDelete = async (id)=>
-{
-  if(!window.confirm("Supprimer cet utilisateur ?")) return ;
+      const data = await res.json();
+      console.log("Données reçues :", data);
+      setUsers(data);
+    } catch (err) {
+      console.error("Erreur fetch employés :", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const handleDelete = async (id) => {
+    if (!window.confirm("Supprimer cet utilisateur ?")) return;
 
-  await fetch(`http://localhost:5001/users/${id}`,{
-    method : "DELETE",
-  });
+    await fetch(`http://localhost:5001/users/${id}`, {
+      method: "DELETE",
+    });
 
-  console.log("Utilisateur supprime , chargement...");
-  
-  fetchUsers();
+    console.log("Utilisateur supprime , chargement...");
 
-}
+    fetchUsers();
+  };
 
   return (
     <>
@@ -74,7 +72,7 @@ const handleDelete = async (id)=>
       {loading ? (
         <p className="text-center mt-6 text-gray-500">Chargement...</p>
       ) : (
-        <UsersTable users={users} onDelete={handleDelete}/>
+        <UsersTable users={users} onDelete={handleDelete} />
       )}
     </>
   );
