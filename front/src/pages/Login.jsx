@@ -5,6 +5,7 @@ import {UserContext} from "../hooks/userContext"
 import { useNavigate } from "react-router-dom";
 import {Lock,Mail } from 'lucide-react'
 import { Link } from "react-router-dom";
+import bgi1 from "../assets/bg1.jpg"
 function Login() {
    const navigate = useNavigate();
   const {setUser} = useContext(UserContext);
@@ -39,7 +40,6 @@ function Login() {
             }else(data.role === "admin")
             {
              navigate("/admin");
-
            }
         } else {
           console.error("Réponse serveur invalide :", data);
@@ -59,8 +59,8 @@ function Login() {
 
     return (
         <>
-        <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-yellow-400 to-green-400">
-            <div className="bg-white/90 backdrop-blur-lg p-8 rounded-2xl shadow-2xl w-[90%] max-w-md transition-transform hover:scale-[1.02]">
+        <div className="flex items-center justify-center min-h-screen " style={{ backgroundImage: `url(${bgi1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <div className="bg-white/ backdrop-blur-lg p-8 rounded-2xl shadow-2xl w-[90%] max-w-md transition-transform hover:scale-[1.02]">
                 <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Connexion</h1>
                 <form onSubmit={handleLogin} className="space-y-5">
                     <div>
