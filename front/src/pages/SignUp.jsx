@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
+import bgi1 from "../assets/bg1.jpg"
+
 
  function SignUp()
 {
@@ -33,8 +35,8 @@ import { Link,useNavigate } from "react-router-dom";
         }
     return(
         <>
-            <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-yellow-400 to-green-400">
-                <div className="bg-white/90 backdrop-blur-lg p-8 rounded-2xl shadow-2xl w-[90%] max-w-md transition-transform hover:scale-[1.02]">
+            <div className="flex items-center justify-center min-h-screen " style={{ backgroundImage: `url(${bgi1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                <div className="bg-white/ backdrop-blur-lg p-8 rounded-2xl shadow-2xl w-[90%] max-w-md transition-transform hover:scale-[1.02]">
                     <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">Create Account</h1>
                     <form onSubmit={handleSignUp} className="space-y-5">
                         <div className="flex">
